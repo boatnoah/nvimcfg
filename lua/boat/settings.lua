@@ -11,8 +11,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.signcolumn = "yes"
-vim.opt.cmdheight = 0
-
+vim.opt.scrolloff = 10
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("boat-highlight-yank", { clear = true }),
