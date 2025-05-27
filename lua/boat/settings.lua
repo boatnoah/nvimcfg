@@ -12,6 +12,8 @@ vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 10
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.cmd([[
   highlight YankHighlight guibg=#ed8796 guifg=#949cbb
 ]])
