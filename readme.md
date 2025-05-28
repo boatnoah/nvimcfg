@@ -1,4 +1,6 @@
-# boat's nvim config
+# boat.nvim
+
+> my neovim config
 
 Installation
 
