@@ -5,11 +5,12 @@ return {
 		config = function()
 			local fzf = require("fzf-lua")
 
-			fzf.setup({})
+			fzf.setup({ { "fzf-vim", "max-perf", "hide" } })
 
 			-- Keymaps
 			vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "[F]ind [F]iles" })
-			vim.keymap.set("n", "<leader>fw", fzf.live_grep, { desc = "[F]ind by [G]rep" })
+			vim.keymap.set("n", "<leader>fw", fzf.live_grep, { desc = "[F]ind by [W]ord" })
+			vim.keymap.set("n", "<leader>fb", fzf.git_branches, { desc = "[F]ind by Git [B]ranches" })
 			vim.keymap.set("n", "<leader>fn", function()
 				fzf.files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[F]ind [N]eovim files" })
