@@ -4,7 +4,7 @@ return {
 		build = ":TSUpdate",
 		opts = {
 			ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc", "go" },
-			auto_install = true,
+			auto_install = false,
 			highlight = {
 				enable = true,
 			},
