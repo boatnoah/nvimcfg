@@ -5,22 +5,23 @@ return {
 		config = function()
 			local fzf = require("fzf-lua")
 
-			fzf.setup({ { "fzf-vim", "max-perf", "hide" } })
+			fzf.setup({
+				"fzf-vim",
+				files = {
+					find_opts = [[--type f --hidden --exclude .git --exclude node_modules --exclude .venv]],
+				},
+				grep = {
+					rg_opts = [[--color=always --hidden --smart-case --glob '!.git/*' --glob '!node_modules/*' --glob '!.venv/*']],
+				},
+				file_ignore_patterns = { ".git/", "node_modules/", ".venv/", "__pycache__/" },
+			})
 
 			-- Keymaps
 			vim.keymap.set("n", "<leader>ff",
-				function()
-					fzf.files({
-						fd_opts = "--type f --exclude node_modules"
-					})
-				end, { desc = "[F]ind [F]iles" })
+				fzf.files, { desc = "[F]ind [F]iles" })
 
 			vim.keymap.set("n", "<leader>fw",
-				function()
-					fzf.live_grep_native(
-						{ cmd = "rg --color=always --smart-case -g '!{.git,node_modules}/'" }
-					)
-				end, { desc = "[F]ind [W]ord" })
+				fzf.live_grep_native, { desc = "[F]ind [W]ord" })
 
 			vim.keymap.set("n", "<leader>fw", fzf.live_grep_native, { desc = "[F]ind [W]ord" })
 			vim.keymap.set("n", "<leader>fb", fzf.git_branches, { desc = "[F]ind by Git [B]ranches" })

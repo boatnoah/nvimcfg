@@ -7,9 +7,13 @@ return {
 			{
 				"<leader>w",
 				function()
-					require("conform").format({ async = true })
+					require("conform").format({
+						async = true,
+						timeout_ms = 500,
+						lsp_fallback = true,
+					})
 				end,
-				mode = "",
+				mode = "n",
 				desc = "format buffer",
 			},
 		},
@@ -35,7 +39,7 @@ return {
 				html = { "prettierd", "prettier", stop_after_first = true },
 				cpp = { "clang-format" },
 				c = { "clang-format" },
-				go = { "gofumpt" },
+				go = { "goimports", "gofumpt" },
 			},
 		},
 	},

@@ -27,18 +27,18 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			local lspconfig = require("lspconfig")
-
-			lspconfig.lua_ls.setup({
+			vim.lsp.config("*", {
 				capabilities = capabilities,
 			})
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
+			vim.lsp.enable({
+				"lua_ls",
+				"gopls",
+				"ts_ls",
+				"pyright",
+				"clangd",
+				"html",
+				"tailwindcss",
 			})
-			lspconfig.ts_ls.setup({ capabilities = capabilities })
-			lspconfig.pyright.setup({ capabilities = capabilities })
-			lspconfig.clangd.setup({ capabilities = capabilities })
-			lspconfig.html.setup({ capabilities = capabilities })
 		end,
 	},
 }
