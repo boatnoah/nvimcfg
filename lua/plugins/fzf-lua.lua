@@ -5,6 +5,8 @@ return {
 		config = function()
 			local fzf = require("fzf-lua")
 
+			fzf.register_ui_select()
+
 			fzf.setup({
 				"fzf-vim",
 				files = {
@@ -23,14 +25,17 @@ return {
 			vim.keymap.set("n", "<leader>fw",
 				fzf.live_grep_native, { desc = "[F]ind [W]ord" })
 
-			vim.keymap.set("n", "<leader>fw", fzf.live_grep_native, { desc = "[F]ind [W]ord" })
 			vim.keymap.set("n", "<leader>fb", fzf.git_branches, { desc = "[F]ind by Git [B]ranches" })
-			vim.keymap.set("n", "<leader>fd", fzf.diagnostics_document, { desc = "[F]ind by Git [B]ranches" })
+			vim.keymap.set("n", "<leader>fd", fzf.diagnostics_document, { desc = "[F]ind by Diagnostics" })
 			vim.keymap.set("n", "<leader>fn", function()
 				fzf.files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[F]ind [N]eovim files" })
 			vim.keymap.set("n", "gd", fzf.lsp_definitions, { desc = "[G]oto [D]efinition" })
+			vim.keymap.set("n", "gr", fzf.lsp_references, { desc = "[G]oto [R]eferences" })
+			vim.keymap.set("n", "gi", fzf.lsp_implementations, { desc = "[G]oto [I]mplementation" })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover Documentation" })
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
+			vim.keymap.set("n", "<leader>ca", fzf.lsp_code_actions, { desc = "[C]ode [A]ction" })
 		end
 	}
 }
